@@ -19,7 +19,7 @@ cv2.line(img,(564,763),(804,763),(0,0,0),3)
 cv2.line(img,(804,763),(1008,956),(0,0,0),3)
 
 h,w,_=img.shape
-cv2.imwrite('points.jpg',img)
+cv2.imwrite('points2.jpg',img)
 
 source_points=np.float32([ [292,994],[564,763],[804,763],[1008,956]  ])
 destination_points = np.float32([ [0,1700], [0, 0], [230, 0], [230, 1700] ])
@@ -31,7 +31,7 @@ result = cv2.warpPerspective(image, matrix, (300,1700))
 plt.figure()
 plt.imshow(result)
 plt.show()
-cv2.imwrite("birdie.jpg",result)
+cv2.imwrite("birdie_test_case_2.jpg",result)
 
 mtx=[[2468.6668434782608,0,1228.876620888020],[0,2468.6668434782608,1012.976060035710],[0,0,1]] 
 dist=[ 0.00125859 , 0 ,  -0.00010658,0 ]
