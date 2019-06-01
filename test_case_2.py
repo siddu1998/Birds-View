@@ -8,26 +8,26 @@ plt.figure()
 plt.imshow(img)
 plt.show()
 
-cv2.circle(img,(292,994),15,(0,255,255),4)
-cv2.circle(img,(564,763),15,(0,255,255),4)
-cv2.circle(img,(804,763),15,(0,255,255),4)
-cv2.circle(img,(1008,956),15,(0,255,255),4)
+cv2.circle(img,(427,991),15,(0,0,255))
+cv2.circle(img,(663,699),15,(0,255,0))
+cv2.circle(img,(748,699),15,(0,255,255))
+cv2.circle(img,(1116,991),15,(0,0,0))
 
-cv2.line(img,(292,994),(564,763),(0,0,0),3)
-cv2.line(img,(292,994),(1008,956),(0,0,0),3)
-cv2.line(img,(564,763),(804,763),(0,0,0),3)
-cv2.line(img,(804,763),(1008,956),(0,0,0),3)
+cv2.line(img,(427,991),(663,699),(0,0,0),3)
+cv2.line(img,(663,699),(748,699),(0,0,0),3)
+cv2.line(img,(748,701),(1116,991),(0,0,0),3)
+cv2.line(img,(1116,991),(427,991),(0,0,0),3)
 
 h,w,_=img.shape
 cv2.imwrite('points2.jpg',img)
 
-source_points=np.float32([ [292,994],[564,763],[804,763],[1008,956]  ])
-destination_points = np.float32([ [0,1700], [0, 0], [230, 0], [230, 1700] ])
+source_points=np.float32([ [427,991],[663,699],[748,699],[1116,991]  ])
+destination_points = np.float32([ [0,1700], [0, 0], [300, 0], [500, 1700] ])
 
 
-image=cv2.imread('points.jpg')
+image=cv2.imread('points2.jpg')
 matrix = cv2.getPerspectiveTransform(source_points, destination_points)
-result = cv2.warpPerspective(image, matrix, (300,1700))
+result = cv2.warpPerspective(image, matrix, (400,1700))
 plt.figure()
 plt.imshow(result)
 plt.show()
