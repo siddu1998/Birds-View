@@ -37,6 +37,7 @@ mtx=[[2468.6668434782608,0,1228.876620888020],[0,2468.6668434782608,1012.9760600
 dist=[ 0.00125859 , 0 ,  -0.00010658,0 ]
 
 ppx=300/3.6
+print(ppx)
 Lh = np.linalg.inv(np.matmul(matrix, mtx))
 pix_per_meter_y = ppx * np.linalg.norm(Lh[:,0]) / np.linalg.norm(Lh[:,1])
 print(ppx, pix_per_meter_y)
