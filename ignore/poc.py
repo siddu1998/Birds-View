@@ -5,25 +5,24 @@ import numpy as np
 img= cv2.imread('0015561.jpg')
 
 #to display image and take in points
-
+plt.figure()
 plt.imshow(img)
 plt.show()
 
 #bottom left cordinates
-bl_x=int(input('please enter bottom left x'))
-bl_y=int(input('please enter bottom left y'))
+bl_x=292
+bl_y=994
 
 #top left cordinates
-tl_x=int(input('please enter top left x'))
-tl_y=int(input('please enter top left y'))
-
+tl_x=564	
+tl_y=763
 #top right cordinates
-tr_x=int(input('please enter top right x'))
-tr_y=int(input('please enter top right y'))
+tr_x=804
+tr_y=757
 
 #bottom right cordinates 
-br_x=int(input('please enter bottom right x'))
-br_y=int(input('please enter bottom right y'))
+br_x=1008
+br_y=956
 
 #visulization purposes
 cv2.circle(img,(bl_x,bl_y),15,(0,255,255),4)
@@ -62,9 +61,9 @@ plt.show()
 cv2.imwrite("birdie.jpg",result)
 
 # camera matrix
-mtx=[[2468.6668434782608,0,1228.876620888020],[0,2468.6668434782608,1012.976060035710],[0,0,1]] 
+mtx=[[1203.032354,0,720.0],[0,1284.609285,540.0],[0,0,1]] 
 #distortion matrix
-dist=[ 0.00125859 , 0 ,  -0.00010658,0 ]
+dist=[ 0 , 0 ,  0,0 ]
 
 #300 pixels correspond to 3.6 meters
 ppx=300/3.6
