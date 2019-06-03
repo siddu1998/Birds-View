@@ -1,3 +1,10 @@
+
+"""
+
+An application to generate a birds view of an ROI
+
+"""
+
 from tkinter import *
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -10,13 +17,12 @@ from PIL import Image
 from PIL import ImageTk
 
 
-refPt = []
-cropping = False
+
 
 
     
 
-
+#to take input from a gui 
 def show_entry_fields():
     global panelA
     global path_a
@@ -40,24 +46,28 @@ def show_entry_fields():
     br_x=int(br_x)
     br_y=int(br_y)
     
-
+    # source points : indicate the ROI you want to genrate the birds view in the image
     source_points=np.float32([ [bl_x,bl_y],[tl_x,tl_y],[tr_x,tr_y],[br_x,br_y]  ])
+    #Destination points: indicate the dimensions of the birds view
     destination_points = np.float32([  [0,1700], [0, 0], [300, 0], [300, 1700] ])
-
+    #Read image from the GUI
     image=cv2.imread(path_a)
-    
+    #As per the math stated in the document in u need to develop a H matrix (homography)
     matrix = cv2.getPerspectiveTransform(source_points, destination_points)
+    #then you wrap the matrix around the image to get the new perspective
     result = cv2.warpPerspective(image, matrix, (230,1700))
+    #Calculations for getting pixels per meter in both the axis
     mtx=[[1203.032354,0,720.0],[0,1284.609285,540.0],[0,0,1]]
     dist=[ 0,0,0,0 ]
-
+    #the USA has it that the length of each lane is 12 feet which is nearly 3.6 meters
     ppx=300/3.6
+    #calculate the ppy as per the document
     Lh = np.linalg.inv(np.matmul(matrix, mtx))
     pix_per_meter_y = ppx * np.linalg.norm(Lh[:,0]) / np.linalg.norm(Lh[:,1])
     print(ppx, pix_per_meter_y)
     length=1700/pix_per_meter_y
     print(length)
-
+    #show and store the birds view
     plt.figure()
     plt.imshow(result)
     plt.show()
