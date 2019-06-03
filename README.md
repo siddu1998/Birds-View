@@ -1,8 +1,8 @@
 # Applications for developing a birds eye perspective
 
 This repository has the two main programs
-1. gui based
-2. plain algorithm 
+1. gui based (python3 gui_give_image_get_bird_view.py)
+2. plain algorithm (python3 no_gui.py)
 
 To run you require the following:
 1. OpenCV
