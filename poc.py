@@ -23,7 +23,7 @@ tr_y=int(input('please enter top right y'))
 
 #bottom right cordinates 
 br_x=int(input('please enter bottom right x'))
-br_y=int(('please enter bottom right y'))
+br_y=int(input('please enter bottom right y'))
 
 #visulization purposes
 cv2.circle(img,(bl_x,bl_y),15,(0,255,255),4)
